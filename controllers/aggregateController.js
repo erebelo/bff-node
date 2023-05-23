@@ -10,36 +10,36 @@ exports.getAggregate = async (req, res) => {
     const resp3 = axios.get(url);
 
     // const all = await Promise.all([resp1, resp2, resp3]);
-    const all = await Promise.allSettled([resp1, resp2, resp3])
-      .then((results) => {
-        const successfulResponses = [];
-        results.forEach((result) => {
-          if (result.status === 'fulfilled') {
-            successfulResponses.push(result.value);
-          } else {
-            console.log(`💥💥💥 Promise error when calling API: ${JSON.stringify(result)}`);
-          }
-        });
-        return successfulResponses;
-      })
-      .catch((error) => {
-        console.error('💥💥💥 Error hadling promises:', error);
+    const all = await Promise.allSettled([resp1, resp2, resp3]).then((results) => {
+      const successfulResponses = [];
+      const errorResponses = [];
+
+      results.forEach((result) => {
+        if (result.status === 'fulfilled') {
+          successfulResponses.push(result.value);
+        } else {
+          errorResponses.push(result.reason.message);
+          console.log(`💥💥💥 Promise error when calling API: ${JSON.stringify(result)}`);
+        }
       });
+
+      if (successfulResponses.length === 0) throw new Error(JSON.stringify(errorResponses));
+
+      return successfulResponses;
+    });
 
     const imgs = all.map((el) => el.data.message);
 
     res.status(200).json({
       status: 'success',
       requestDateTime: req.requestDateTime,
-      data: {
-        imgs: imgs,
-      },
+      data: imgs,
     });
   } catch (err) {
     res.status(400).json({
       status: 'error',
       requestDateTime: req.requestDateTime,
-      error: err.message || err,
+      error: `💥💥💥 Error handling promises: ${err.message || err}`,
     });
   }
 };
