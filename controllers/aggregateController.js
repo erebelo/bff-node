@@ -1,5 +1,5 @@
 const axios = require('axios');
-const asyncCatch = require('./../exceptions/asyncCatch');
+const { asyncCatch } = require('./../exceptions/asyncCatch');
 const AppError = require('./../exceptions/appError');
 
 exports.getAggregate = asyncCatch(async (req, res, next) => {
@@ -38,4 +38,8 @@ exports.getAggregate = asyncCatch(async (req, res, next) => {
     status: 'success',
     data: imgs,
   });
+});
+
+exports.postAggregate = asyncCatch(async (req, res, next) => {
+  res.status(201).end();
 });
