@@ -1,0 +1,61 @@
+{
+	"info": {
+		"_postman_id": "5ea814c9-93e2-4179-836a-ef3817babf08",
+		"name": "BFF NodeJS & Express",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3559566"
+	},
+	"item": [
+		{
+			"name": "Get Aggregate",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/aggregate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"aggregate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Aggregate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"placeholder\": {\r\n        \"age\": 60,\r\n        \"dateOfBirth\": \"2022-05-01\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/aggregate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"aggregate"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

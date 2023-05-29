@@ -14,7 +14,7 @@ if (['dev'].includes((process.env.NODE_ENV || '').trim())) {
 app.use(express.json());
 
 app.use((req, res, next) => {
-  req.headers = { ...req.headers, 'X-RequestId': Math.random().toString(36).slice(-10) };
+  req.headers = { ...req.headers, 'x-requestid': Math.random().toString(36).slice(-10) };
   next();
 });
 
