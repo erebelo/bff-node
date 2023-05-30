@@ -10,7 +10,18 @@
 			"name": "Get Aggregate",
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "xyz",
+						"type": "text"
+					},
+					{
+						"key": "Cookie",
+						"value": "SESSION=test",
+						"type": "text"
+					}
+				],
 				"url": {
 					"raw": "http://localhost:3000/api/v1/aggregate",
 					"protocol": "http",
@@ -31,10 +42,21 @@
 			"name": "Post Aggregate",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "xyz",
+						"type": "text"
+					},
+					{
+						"key": "Cookie",
+						"value": "SESSION=test",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"placeholder\": {\r\n        \"age\": 60,\r\n        \"dateOfBirth\": \"2022-05-01\"\r\n    }\r\n}",
+					"raw": "{\r\n    \"placeholder\": {\r\n        \"age\": 80,\r\n        \"dateOfBirth\": \"2022-05-01\"\r\n    }\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"

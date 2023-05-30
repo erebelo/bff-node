@@ -17,6 +17,7 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "morgan": "^1.10.0",
+    "winston": "^3.9.0",
     "yup": "^1.2.0"
   },
   "devDependencies": {

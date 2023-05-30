@@ -1,9 +1,10 @@
 const dotenv = require('dotenv');
+const logger = require('./logger/logger');
 
 // Handling Uncaught Synchronous Exceptions
 process.on('uncaughtException', (err) => {
-  console.log('💥💥💥 UNCAUGHT EXCEPTION! \nShutting down...');
-  console.log(err.name, err.message);
+  logger.error(`UNCAUGHT EXCEPTION! errorName=${err.name}, errorMessage=${err.message}`);
+  logger.error('💥💥💥 Shutting down...');
   process.exit(1);
 });
 
@@ -18,13 +19,13 @@ const app = require('./app');
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
-  console.log(`App running on port ${port}...`);
+  logger.info(`App running on port ${port}...`);
 });
 
 // Handling Unhandled Rejected Promises/Asynchronous Code
 process.on('unhandledRejection', (err) => {
-  console.log('💥💥💥 UNHANDLED REJECTION! \nShutting down...');
-  console.log(err.name, err.message);
+  logger.error(`UNHANDLED REJECTION! errorName=${err.name}, errorMessage=${err.message}`);
+  logger.error('💥💥💥 Shutting down...');
   server.close(() => {
     process.exit(1);
   });

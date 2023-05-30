@@ -15,7 +15,7 @@ module.exports = yup.object({
           }
           return parse(originalValue, 'dd.MM.yyyy', new Date());
         })
-        .typeError('please enter a valid date')
+        .typeError('please enter a valid dateOfBirth')
         .required()
         .min('1969-12-31', 'dateOfBirth is too early')
         .max(new Date(), 'dateOfBirth is too late'),

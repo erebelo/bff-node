@@ -1,5 +1,10 @@
+const LoggerContext = require('./../logger/loggerContext');
+const logger = require('./../logger/logger');
+const { HEADERS } = require('./../constants/aggregateConstant');
+
 module.exports = (err, req, res, next) => {
-  console.log(`💥💥💥 STACK TRACE ERROR: ${err.stack}`);
+  const context = new LoggerContext(req.headers[HEADERS.X_REQUEST_ID], 'globalExceptionHandler.js', 'default');
+  logger.child({ context: context }).error(`💥💥💥 STACK TRACE ERROR: ${err.stack}`);
 
   err.status = err.status || 'error';
   err.statusCode = err.statusCode || 500;
