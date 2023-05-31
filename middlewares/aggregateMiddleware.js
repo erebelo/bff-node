@@ -1,4 +1,4 @@
-const { validationAsyncCatch } = require('./../exceptions/asyncCatch');
+const { validationAsyncCatch } = require('../exceptions/asyncCatch');
 
 exports.checkPayload = (schema) =>
   validationAsyncCatch(async (req, res, next) => {

@@ -1,6 +1,6 @@
-const LoggerContext = require('./../logger/loggerContext');
-const logger = require('./../logger/logger');
-const { HEADERS } = require('./../constants/aggregateConstant');
+const LoggerContext = require('../logger/loggerContext');
+const logger = require('../logger/logger');
+const { HEADERS } = require('../constants/aggregateConstant');
 
 module.exports = (err, req, res, next) => {
   const context = new LoggerContext(req.headers[HEADERS.X_REQUEST_ID], 'globalExceptionHandler.js', 'default');

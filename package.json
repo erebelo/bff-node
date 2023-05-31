@@ -1,12 +1,15 @@
 {
   "name": "bff-node-poc",
   "version": "1.0.0",
+  "engines": {
+    "node": ">=18.16.0"
+  },
   "description": "BFF POC using nodeJS & express",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:dev": "set NODE_ENV=dev && node --watch server.js",
-    "start:prod": "set NODE_ENV=prod && node --watch server.js",
+    "start:dev": "set NODE_ENV=dev && nodemon server.js",
+    "start:prod": "set NODE_ENV=prod && nodemon server.js",
     "debug": "ndb server.js"
   },
   "author": "Eduardo Rebelo",
@@ -21,6 +24,16 @@
     "yup": "^1.2.0"
   },
   "devDependencies": {
-    "ndb": "^1.1.5"
+    "eslint": "^8.41.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.32.2",
+    "ndb": "^1.1.5",
+    "nodemon": "^2.0.22",
+    "prettier": "^2.8.8"
   }
 }

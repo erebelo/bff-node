@@ -1,7 +1,7 @@
 const express = require('express');
-const { checkPayload } = require('./../middlewares/aggregateMiddleware');
-const aggregateValidation = require('./../validations/aggregateValidation');
-const aggregateController = require('./../controllers/aggregateController');
+const { checkPayload } = require('../middlewares/aggregateMiddleware');
+const aggregateValidation = require('../validations/aggregateValidation');
+const aggregateController = require('../controllers/aggregateController');
 
 const router = express.Router();
 

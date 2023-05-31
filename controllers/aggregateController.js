@@ -1,9 +1,9 @@
 const axios = require('axios');
-const LoggerContext = require('./../logger/loggerContext');
-const logger = require('./../logger/logger');
-const { asyncCatch } = require('./../exceptions/asyncCatch');
-const AppError = require('./../exceptions/appError');
-const { HEADERS } = require('./../constants/aggregateConstant');
+const LoggerContext = require('../logger/loggerContext');
+const logger = require('../logger/logger');
+const { asyncCatch } = require('../exceptions/asyncCatch');
+const AppError = require('../exceptions/appError');
+const { HEADERS } = require('../constants/aggregateConstant');
 
 const axiosInstance = axios.create();
 axiosInstance.defaults.timeout = 5000;
@@ -67,7 +67,7 @@ exports.postAggregate = asyncCatch(async (req, res, next) => {
   const response = await axiosInstance.post(url, req.body, config);
 
   // console.log(response.config);
-  const data = response.data;
+  const { data } = response;
 
   res.status(201).json({
     status: 'success',
