@@ -41,14 +41,16 @@ exports.getAggregate = asyncCatch(async (req, res, next) => {
     return successfulResponses;
   });
 
-  const imgs = all.map((el) => el.data.message);
+  if (all) {
+    const imgs = all.map((el) => el.data.message);
 
-  res.status(200).json({
-    status: 'success',
-    data: imgs,
-  });
+    res.status(200).json({
+      status: 'success',
+      data: imgs,
+    });
 
-  logger.child({ context: context }).info('GET aggregate successfully');
+    logger.child({ context: context }).info('GET aggregate successfully');
+  }
 });
 
 exports.postAggregate = asyncCatch(async (req, res, next) => {

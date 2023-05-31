@@ -1,8 +1,10 @@
 const express = require('express');
 const morgan = require('morgan');
+const uuid = require('uuid');
 const AppError = require('./exceptions/appError');
 const globalExceptionHandler = require('./exceptions/globalExceptionHandler');
 const aggregateRouter = require('./routes/aggregateRoutes');
+const { HEADERS } = require('./constants/aggregateConstant');
 
 const app = express();
 
@@ -14,7 +16,7 @@ if (['dev'].includes((process.env.NODE_ENV || '').trim())) {
 app.use(express.json());
 
 app.use((req, res, next) => {
-  req.headers = { ...req.headers, 'x-requestid': Math.random().toString(36).slice(-10) };
+  req.headers = { ...req.headers, [HEADERS.X_REQUEST_ID]: uuid.v4() };
   next();
 });
 
